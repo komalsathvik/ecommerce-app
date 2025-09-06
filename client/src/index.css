@@ -15,6 +15,14 @@ body {
   align-items: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+body {
+  padding-top: 70px; /* for navbar */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #f8f9fa; /* optional light bg */
+  margin: 0;
+  height: auto; /* allow scrolling */
+  display: block; /* remove flex centering */
+}
 
 .form_container {
   background-color: #fff;
@@ -112,4 +120,29 @@ span a {
     padding: 0.6rem 1rem;
     font-size: 1.5rem;
   }
+}
+.listing-card {
+  margin-bottom: 30px; /* space between rows */
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-img-container {
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-img-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

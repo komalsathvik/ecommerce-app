@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoute");
 
+const listingRoutes = require("./routes/ListingsRoute");
 const port = process.env.PORT || 3000;
 const url = process.env.MONGO_URL;
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/", authRoute);
+app.use("/api/listings", listingRoutes);
 
 async function connectDB() {
   try {

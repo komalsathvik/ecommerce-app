@@ -4,33 +4,23 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Signup = () => {
+const Signup = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
     username: "",
   });
-
   const { email, password, username } = inputValue;
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    setInputValue({
-      ...inputValue,
-      [name]: value,
-    });
+    setInputValue({ ...inputValue, [name]: value });
   };
 
-  const handleError = (err) =>
-    toast.error(err, {
-      position: "bottom-left",
-    });
-
+  const handleError = (err) => toast.error(err, { position: "bottom-left" });
   const handleSuccess = (msg) =>
-    toast.success(msg, {
-      position: "bottom-right",
-    });
+    toast.success(msg, { position: "bottom-right" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,10 +32,10 @@ const Signup = () => {
       );
 
       if (data.success) {
+        localStorage.setItem("token", data.token);
+        setIsLoggedIn(true);
         handleSuccess(data.message);
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
+        setTimeout(() => navigate("/"), 1500);
       } else {
         handleError(data.message);
       }
