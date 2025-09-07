@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { CartContext } from "../context/CartContext";
 
 const CategoryPage = () => {
   const { name } = useParams();
   const [products, setProducts] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchCategoryProducts = async () => {
@@ -41,10 +43,22 @@ const CategoryPage = () => {
                   {product.description.substring(0, 80)}...
                 </p>
                 <p className="fw-bold">₹{product.price}</p>
+                <button
+                  className="btn btn-primary mt-auto"
+                  onClick={() => addToCart(product)}
+                >
+                  Add to Cart 🛒
+                </button>
               </div>
             </div>
           </div>
         ))}
+
+        {products.length === 0 && (
+          <p className="text-center text-muted">
+            No products found in this category.
+          </p>
+        )}
       </div>
     </div>
   );

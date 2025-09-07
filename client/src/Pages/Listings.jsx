@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+// src/Pages/Listings.jsx
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { CartContext } from "../context/CartContext"; // import global cart
 
 function Listings() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const { addToCart } = useContext(CartContext); // use global addToCart
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,13 +20,8 @@ function Listings() {
     fetchProducts();
   }, []);
 
-  const handleAddToCart = (product) => {
-    setCart([...cart, product]);
-    alert(`${product.title} added to cart`);
-  };
-
   return (
-    <div className="container">
+    <div className="container mt-5">
       <h2 className="mb-4 text-center">All Products</h2>
       <div className="row g-4">
         {products.map((product) => (
@@ -35,6 +32,7 @@ function Listings() {
                   src={product.image}
                   className="card-img-top"
                   alt={product.title}
+                  style={{ height: "200px", objectFit: "cover" }}
                 />
               </div>
               <div className="card-body d-flex flex-column">
@@ -45,14 +43,17 @@ function Listings() {
                 <p className="fw-bold">₹{product.price}</p>
                 <button
                   className="btn btn-primary mt-auto"
-                  onClick={() => handleAddToCart(product)}
+                  onClick={() => addToCart(product)}
                 >
-                  Add to Cart
+                  Add to Cart 🛒
                 </button>
               </div>
             </div>
           </div>
         ))}
+        {products.length === 0 && (
+          <p className="text-center text-muted">No products found.</p>
+        )}
       </div>
     </div>
   );

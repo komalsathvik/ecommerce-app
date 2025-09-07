@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react"; // added useState, useEffect
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { CartContext } from "../context/CartContext"; // import cart context
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
-  const [categories, setCategories] = useState([]); // <-- add state for categories
+  const [categories, setCategories] = useState([]);
+  const { cart } = useContext(CartContext); // get cart from context
 
   useEffect(() => {
-    // fetch categories from backend
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
@@ -44,7 +45,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-center">
             <li className="nav-item">
               <Link className="nav-link" to="/listings">
                 Listings
@@ -69,6 +70,18 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
                   </li>
                 ))}
               </ul>
+            </li>
+
+            {/* Cart with count */}
+            <li className="nav-item ms-3">
+              <Link className="nav-link position-relative" to="/cart">
+                🛒 Cart
+                {cart.length > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {cart.length}
+                  </span>
+                )}
+              </Link>
             </li>
 
             {!isLoggedIn ? (

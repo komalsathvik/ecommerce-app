@@ -7,18 +7,23 @@ import Signup from "./Auth/SignUp";
 import Navbar from "./Pages/Navbar";
 import Listings from "./Pages/Listings";
 import CategoryPage from "./Pages/CategoryPage";
+import CartPage from "./Pages/CartPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 
+import { ToastContainer } from "react-toastify";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
+
   return (
     <Router>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -35,8 +40,12 @@ function App() {
           />
           <Route path="/listings" element={<Listings />} />
           <Route path="/category/:name" element={<CategoryPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </div>
+
+      {/* Toast container at root level */}
+      <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
     </Router>
   );
 }
