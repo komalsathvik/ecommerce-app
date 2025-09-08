@@ -4,19 +4,22 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoute");
-
 const listingRoutes = require("./routes/ListingsRoute");
+
 const port = process.env.PORT || 3000;
 const url = process.env.MONGO_URL;
 
 const app = express();
 
+const FRONTEND_URL = "https://ecommerce-app-eta-five-37.vercel.app";
+
 app.use(
   cors({
-    origin: true,
+    origin: FRONTEND_URL,
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
