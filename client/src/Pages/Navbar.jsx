@@ -12,7 +12,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3000/api/listings/categories"
+          "https://ecommerce-app-1-wk1x.onrender.com/api/listings/categories"
         );
         if (data.success) setCategories(data.categories);
       } catch (err) {

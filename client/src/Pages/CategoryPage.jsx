@@ -12,7 +12,7 @@ const CategoryPage = () => {
     const fetchCategoryProducts = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/listings/category/${name}`
+          `https://ecommerce-app-1-wk1x.onrender.com/api/listings/category/${name}`
         );
         if (data.success) setProducts(data.products);
       } catch (err) {

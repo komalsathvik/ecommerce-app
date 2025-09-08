@@ -10,7 +10,9 @@ function Listings() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/api/listings");
+        const { data } = await axios.get(
+          "https://ecommerce-app-1-wk1x.onrender.com/api/listings"
+        );
         if (data.success) setProducts(data.products);
         else setProducts(data);
       } catch (err) {

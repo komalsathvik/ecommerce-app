@@ -22,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/login",
+        "https://ecommerce-app-1-wk1x.onrender.com/login",
         inputValue,
         { withCredentials: true }
       );

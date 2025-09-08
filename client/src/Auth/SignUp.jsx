@@ -26,7 +26,7 @@ const Signup = ({ setIsLoggedIn }) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/signup",
+        "https://ecommerce-app-1-wk1x.onrender.com/signup",
         inputValue,
         { withCredentials: true }
       );
