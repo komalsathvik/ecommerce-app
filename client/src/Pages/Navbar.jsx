@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { CartContext } from "../context/CartContext"; // import cart context
+import { CartContext } from "../context/CartContext";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const { cart } = useContext(CartContext); // get cart from context
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -52,7 +52,6 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
               </Link>
             </li>
 
-            {/* Categories dropdown */}
             <li className="nav-item dropdown">
               <span
                 className="nav-link dropdown-toggle"
@@ -72,7 +71,6 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
               </ul>
             </li>
 
-            {/* Cart with count */}
             <li className="nav-item ms-3">
               <Link className="nav-link position-relative" to="/cart">
                 🛒 Cart

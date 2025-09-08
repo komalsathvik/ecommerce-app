@@ -1,11 +1,11 @@
 // src/Pages/Listings.jsx
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { CartContext } from "../context/CartContext"; // import global cart
+import { CartContext } from "../context/CartContext";
 
 function Listings() {
   const [products, setProducts] = useState([]);
-  const { addToCart } = useContext(CartContext); // use global addToCart
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProducts = async () => {

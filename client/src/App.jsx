@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
@@ -43,8 +42,6 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
         </Routes>
       </div>
-
-      {/* Toast container at root level */}
       <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
     </Router>
   );

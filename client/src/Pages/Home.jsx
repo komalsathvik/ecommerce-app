@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="home-page">
-      {/* Hero Section */}
       <section
         className="text-white text-center py-5 mb-5"
         style={{
@@ -27,11 +26,9 @@ function Home() {
         </div>
       </section>
 
-      {/* Categories Preview */}
       <section className="container mb-5">
         <h2 className="text-center mb-4">Shop by Category</h2>
         <div className="row g-4">
-          {/* Electronics */}
           <div className="col-12 col-md-4">
             <div className="card shadow-sm border-0 h-100">
               <img
@@ -52,7 +49,6 @@ function Home() {
             </div>
           </div>
 
-          {/* Books */}
           <div className="col-12 col-md-4">
             <div className="card shadow-sm border-0 h-100">
               <img
@@ -70,7 +66,6 @@ function Home() {
             </div>
           </div>
 
-          {/* Groceries */}
           <div className="col-12 col-md-4">
             <div className="card shadow-sm border-0 h-100">
               <img
@@ -93,7 +88,6 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="bg-light py-5 text-center">
         <div className="container">
           <h3 className="fw-bold mb-3">

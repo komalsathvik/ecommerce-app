@@ -45,8 +45,6 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-
-          {/* Total + clear */}
           <div className="d-flex justify-content-between align-items-center mt-4">
             <h4>Total: ₹{total}</h4>
             <button className="btn btn-warning" onClick={clearCart}>
